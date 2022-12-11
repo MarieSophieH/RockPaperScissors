@@ -11,31 +11,33 @@
         <script> 
         
         function getComputerChoice() {
-         let r = (Math.random() * (4 - 0) + 0);
+         let r = (Math.random() * (1 - 0) + 0);
          console.log(r);
-         if (r<1) {return "Rock";}
-         if (r<2.5&&r>=1) {return "Paper";}
-         if (r>=2.5) {return "Scissors";}
+         if (r<0.33) {return "Rock";}
+         if (r<0.66&&r>=0.33) {return "Paper";}
+         if (r>=0.66) {return "Scissors";}
         }
         let comp =0;
         let player = 0;
-        let d = 0;
+        let d = 1;
         function playRound(){
             let computerSelection =getComputerChoice(); 
-            alert("What's your first guess? Print 'r' for Rock, 'p' for Paper and 's' for Scissors.");
+            alert("Round: " + d + ". What's your guess? (rock, paper or scissors)?");
             let playerSelection = prompt();
             result();
+            d = d+1;
             
             function result() {
-                if(computerSelection =='Rock' && playerSelection =='r') {alert("It's a tie for this round. You both chose rock. Current score: you: " + player + ", computer: " + comp); }
-                if(computerSelection =='Rock' && playerSelection =='p') {player = player+1; alert("The computer chose rock. You win this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Rock' && playerSelection =='s') { comp = comp+1; alert("The computer chose rock. You loose this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Paper' && playerSelection =='r') {comp = comp+1; alert("The computer chose paper. You loose this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Paper' && playerSelection =='p') {alert("It's a tie for this round. You both chose paper. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Paper' && playerSelection =='s') {player = player+1; calert("The computer chose paper. You win this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Scissors' && playerSelection =='r') {player = player+1; alert("The computer chose scissors. You win this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Scissors' && playerSelection =='p') {comp = comp+1; alert("The computer chose scissors. You loose this round. Current score: you: " + player + ", computer: " + comp);}
-                if(computerSelection =='Scissors' && playerSelection =='s') {alert("It's a tie for this round. You both chose scissors. Current score: you: " + player + ", computer: " + comp);}
+                if(computerSelection =='Rock' && playerSelection.toLowerCase() =='rock') {alert("It's a tie for this round. You both chose rock. Current score: you: " + player + ", computer: " + comp); }
+                else if(computerSelection =='Rock' && playerSelection.toLowerCase() =='paper') {player = player+1; alert("The computer chose rock. You win this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Rock' && playerSelection.toLowerCase() =='scissors') { comp = comp+1; alert("The computer chose rock. You loose this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Paper' && playerSelection.toLowerCase() =='rock') {comp = comp+1; alert("The computer chose paper. You loose this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Paper' && playerSelection.toLowerCase() =='paper') {alert("It's a tie for this round. You both chose paper. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Paper' && playerSelection.toLowerCase() =='scissors') {player = player+1; calert("The computer chose paper. You win this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Scissors' && playerSelection.toLowerCase() =='rock') {player = player+1; alert("The computer chose scissors. You win this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Scissors' && playerSelection.toLowerCase() =='paper') {comp = comp+1; alert("The computer chose scissors. You loose this round. Current score: you: " + player + ", computer: " + comp);}
+                else if(computerSelection =='Scissors' && playerSelection.toLowerCase() =='scissors') {alert("It's a tie for this round. You both chose scissors. Current score: you: " + player + ", computer: " + comp);}
+                else {alert("Incorrect input.");}
             }
         }
 
